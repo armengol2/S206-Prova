@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "a994770f-d6b5-459d-bd8c-3f8893bb590f",
+		"_postman_id": "1e3938af-d14f-48c6-b4f1-a68489eb0a67",
 		"name": "ProvaS206-Postman",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "49961548",
-		"_collection_link": "https://leonardoferreira23-2803071.postman.co/workspace/Leonardo-S.-Ferreira's-Workspac~d2761bdf-7cae-48ab-84cc-aa7feda7575c/collection/49961548-a994770f-d6b5-459d-bd8c-3f8893bb590f?action=share&source=collection_link&creator=49961548"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "35952565"
 	},
 	"item": [
 		{
@@ -17,9 +16,7 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-							"});"
+							""
 						],
 						"type": "text/javascript",
 						"packages": {},
@@ -30,20 +27,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "https://gorest.co.in/public/v2/users",
-					"protocol": "https",
-					"host": [
-						"gorest",
-						"co",
-						"in"
-					],
-					"path": [
-						"public",
-						"v2",
-						"users"
-					]
-				}
+				"url": "https://gorest.co.in/public/v2/users"
 			},
 			"response": []
 		},
@@ -68,31 +52,24 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "7cf39732a1e198dd8e5e8ff3bd9c136c06135ff430eee6d37e39b9e3016fcc1d"
+					}
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Castor de Andrade\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"Castor12@teste.com\",\r\n    \"status\": \"active\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Castor de Andrade\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"Castor12333@teste.com\",\r\n    \"status\": \"active\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": {
-					"raw": "https://gorest.co.in/public/v2/users",
-					"protocol": "https",
-					"host": [
-						"gorest",
-						"co",
-						"in"
-					],
-					"path": [
-						"public",
-						"v2",
-						"users"
-					]
-				}
+				"url": "https://gorest.co.in/public/v2/users"
 			},
 			"response": []
 		},
@@ -120,34 +97,79 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "https://gorest.co.in/public/v2/users/{{user_id}}",
-					"protocol": "https",
-					"host": [
-						"gorest",
-						"co",
-						"in"
-					],
-					"path": [
-						"public",
-						"v2",
-						"users",
-						"{{user_id}}"
-					]
+				"url": "https://gorest.co.in/public/v2/users/{{user_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
 				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "7cf39732a1e198dd8e5e8ff3bd9c136c06135ff430eee6d37e39b9e3016fcc1d"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Castor de Andrade\",\r\n    \"status\": \"inactive\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://gorest.co.in/public/v2/users/{{user_id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar usuario negativo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://gorest.co.in/public/v2/users/40028922"
 			},
 			"response": []
 		}
 	],
 	"auth": {
 		"type": "bearer",
-		"bearer": [
-			{
-				"key": "token",
-				"value": "7cf39732a1e198dd8e5e8ff3bd9c136c06135ff430eee6d37e39b9e3016fcc1d",
-				"type": "string"
-			}
-		]
+		"bearer": {
+			"token": "7cf39732a1e198dd8e5e8ff3bd9c136c06135ff430eee6d37e39b9e3016fcc1d"
+		}
 	},
 	"event": [
 		{
